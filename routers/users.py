@@ -3,7 +3,7 @@ sys.path.append("..")
 
 import models
 from database import engine
-from typing import Annotated
+# from typing import Annotated
 from pydantic import BaseModel
 from database import SessionLocal
 from sqlalchemy.orm import Session
@@ -34,8 +34,10 @@ def get_db():
         db.close()
 
 
-db_dependency = Annotated[Session, Depends(get_db)]
-user_dependency = Annotated[dict, Depends(get_current_user)]
+# db_dependency = Annotated[Session, Depends(get_db)]
+# user_dependency = Annotated[dict, Depends(get_current_user)]
+db_dependency = Session, Depends(get_db)
+user_dependency = dict, Depends(get_current_user)
 http_exception_401 = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate user."
