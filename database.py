@@ -8,10 +8,7 @@ POSTGRESQL_DATABASE_URL = (
     "dpg-churvkfdvk4olisqgkj0-a/todoapp_free_postgresql_db"
 )
 engine = create_engine(
-    POSTGRESQL_DATABASE_URL,
-    connect_args={
-        "check_same_thread": False
-    }
+    POSTGRESQL_DATABASE_URL
 )
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
