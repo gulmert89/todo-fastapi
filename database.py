@@ -2,9 +2,16 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
-SQLALCHEMY_DATABASE_URL = "sqlite:///./todos.db"
+POSTGRESQL_DATABASE_URL = (
+    "postgresql://todoapp_free_postgresql_db_user:"
+    "aDimwd5PdVL2JvVeOeeB53OWDXvosD9j@"
+    "dpg-churvkfdvk4olisqgkj0-a/todoapp_free_postgresql_db"
+)
 engine = create_engine(
-    SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
+    POSTGRESQL_DATABASE_URL,
+    connect_args={
+        "check_same_thread": False
+    }
 )
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
